@@ -32,7 +32,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { CATEGORIES, PRIORITIES, STATUSES } from "@/lib/mock-data";
+import { ASSIGNEES, CATEGORIES, PRIORITIES, STATUSES } from "@/lib/mock-data";
 
 type CreateTaskDialogProps = {
   open: boolean;
@@ -179,7 +179,18 @@ export function CreateTaskDialog({
                     id="task-priority"
                     className="h-11 rounded-xl bg-card/40 border-border/70 w-full"
                   >
-                    <SelectValue />
+                    <SelectValue>
+                      {(value) => {
+                        const item = PRIORITIES.find((p) => p.value === value);
+                        if (!item) return value as React.ReactNode;
+                        return (
+                          <span className="inline-flex items-center gap-2">
+                            <span className={cn("size-1.5 rounded-full", item.dot)} />
+                            {item.label}
+                          </span>
+                        );
+                      }}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     {PRIORITIES.map((p) => (
@@ -201,7 +212,18 @@ export function CreateTaskDialog({
                     id="task-status"
                     className="h-11 rounded-xl bg-card/40 border-border/70 w-full"
                   >
-                    <SelectValue />
+                    <SelectValue>
+                      {(value) => {
+                        const item = STATUSES.find((s) => s.value === value);
+                        if (!item) return value as React.ReactNode;
+                        return (
+                          <span className="inline-flex items-center gap-2">
+                            <span className={cn("size-1.5 rounded-full", item.color)} />
+                            {item.label}
+                          </span>
+                        );
+                      }}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     {STATUSES.map((s) => (
@@ -256,13 +278,16 @@ export function CreateTaskDialog({
                     id="task-assignee"
                     className="h-11 rounded-xl bg-card/40 border-border/70 w-full"
                   >
-                    <SelectValue />
+                    <SelectValue>
+                      {(value) => ASSIGNEES.find((a) => a.value === value)?.label ?? (value as React.ReactNode)}
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="me">Saya (Andini Putri)</SelectItem>
-                    <SelectItem value="bs">Budi S.</SelectItem>
-                    <SelectItem value="cl">Citra L.</SelectItem>
-                    <SelectItem value="dr">Dimas R.</SelectItem>
+                    {ASSIGNEES.map((a) => (
+                      <SelectItem key={a.value} value={a.value}>
+                        {a.label}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>

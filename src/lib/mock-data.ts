@@ -65,6 +65,13 @@ export const CATEGORIES = [
   "Administrasi",
 ];
 
+export const ASSIGNEES: { value: string; label: string }[] = [
+  { value: "me", label: "Saya (Andini Putri)" },
+  { value: "bs", label: "Budi S." },
+  { value: "cl", label: "Citra L." },
+  { value: "dr", label: "Dimas R." },
+];
+
 export const MOCK_TASKS: Task[] = [
   {
     id: "TSK-001",
