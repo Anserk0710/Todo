@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { motion } from "motion/react";
+import { AppLink } from "@/lib/app-router";
 import {
   CalendarDays,
   CheckCircle2,
@@ -156,7 +156,7 @@ export function AuthShell({
 
 function Brand({ compact = false }: { compact?: boolean }) {
   return (
-    <Link
+    <AppLink
       href="/"
       className={cn(
         "inline-flex items-center gap-2.5 group",
@@ -170,6 +170,6 @@ function Brand({ compact = false }: { compact?: boolean }) {
       <span className="font-semibold tracking-tight">
         GA <span className="text-muted-foreground font-normal">Todo</span>
       </span>
-    </Link>
+    </AppLink>
   );
 }

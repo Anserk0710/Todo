@@ -1,9 +1,8 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
+import { AppLink, useAppRouter } from "@/lib/app-router";
 import { ArrowRight, Eye, EyeOff, Loader2, Lock, Mail } from "lucide-react";
 import { toast } from "sonner";
 
@@ -14,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { SocialButtons } from "@/components/auth/social-buttons";
 
 export function LoginForm() {
-  const router = useRouter();
+  const { navigate } = useAppRouter();
   const [showPassword, setShowPassword] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
@@ -25,7 +24,7 @@ export function LoginForm() {
     setTimeout(() => {
       setLoading(false);
       toast.success("Berhasil masuk — selamat bekerja!");
-      router.push("/dashboard");
+      navigate("/dashboard");
     }, 900);
   }
 
@@ -54,12 +53,12 @@ export function LoginForm() {
           <Label htmlFor="password" className="text-sm">
             Password
           </Label>
-          <Link
+          <AppLink
             href="/forgot-password"
             className="text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
             Lupa password?
-          </Link>
+          </AppLink>
         </div>
         <div className="relative">
           <Lock className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />

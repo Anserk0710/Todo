@@ -1,9 +1,8 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Bell, LogOut, Plus, Search, Settings, User } from "lucide-react";
+import { AppLink, useAppRouter } from "@/lib/app-router";
 import { toast } from "sonner";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -23,7 +22,7 @@ type DashboardTopbarProps = {
 };
 
 export function DashboardTopbar({ onCreateTask }: DashboardTopbarProps) {
-  const router = useRouter();
+  const { navigate } = useAppRouter();
 
   return (
     <header className="sticky top-0 z-30 border-b border-border/70 bg-background/70 backdrop-blur-xl">
@@ -81,11 +80,11 @@ export function DashboardTopbar({ onCreateTask }: DashboardTopbarProps) {
             <DropdownMenuContent align="end" className="w-56 rounded-xl">
               <DropdownMenuLabel>Akun saya</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem render={<Link href="/dashboard/profile" />}>
+              <DropdownMenuItem render={<AppLink href="/dashboard/profile" />}>
                 <User className="size-4" />
                 <span>Profil</span>
               </DropdownMenuItem>
-              <DropdownMenuItem render={<Link href="/dashboard/settings" />}>
+              <DropdownMenuItem render={<AppLink href="/dashboard/settings" />}>
                 <Settings className="size-4" />
                 <span>Pengaturan</span>
               </DropdownMenuItem>
@@ -93,7 +92,7 @@ export function DashboardTopbar({ onCreateTask }: DashboardTopbarProps) {
               <DropdownMenuItem
                 onClick={() => {
                   toast("Sampai jumpa lagi!");
-                  router.push("/");
+                  navigate("/");
                 }}
                 className="text-rose-400 focus:text-rose-300"
               >

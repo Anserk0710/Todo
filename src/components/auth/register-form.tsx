@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
+import { useAppRouter } from "@/lib/app-router";
 import {
   ArrowRight,
   Briefcase,
@@ -22,7 +22,7 @@ import { Label } from "@/components/ui/label";
 import { SocialButtons } from "@/components/auth/social-buttons";
 
 export function RegisterForm() {
-  const router = useRouter();
+  const { navigate } = useAppRouter();
   const [showPassword, setShowPassword] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
@@ -32,7 +32,7 @@ export function RegisterForm() {
     setTimeout(() => {
       setLoading(false);
       toast.success("Akun berhasil dibuat — silakan masuk.");
-      router.push("/");
+      navigate("/");
     }, 900);
   }
 

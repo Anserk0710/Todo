@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { AppRouterProvider } from "@/lib/app-router";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
@@ -31,7 +32,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full bg-background text-foreground flex flex-col">
-        {children}
+        <AppRouterProvider>{children}</AppRouterProvider>
         <Toaster
           position="top-right"
           theme="dark"

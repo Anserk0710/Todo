@@ -1,9 +1,8 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
+import { AppLink, useAppPathname } from "@/lib/app-router";
 import {
   BarChart3,
   CalendarDays,
@@ -40,7 +39,7 @@ const SECONDARY_NAV: NavItem[] = [
 ];
 
 export function DashboardSidebar() {
-  const pathname = usePathname();
+  const pathname = useAppPathname();
 
   return (
     <aside className="hidden lg:flex sticky top-0 h-screen w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar/80 backdrop-blur-xl">
@@ -106,7 +105,7 @@ function NavLink({ item, active }: { item: NavItem; active: boolean }) {
   const Icon = item.icon;
   return (
     <li>
-      <Link
+      <AppLink
         href={item.href}
         className={cn(
           "relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors",
@@ -134,7 +133,7 @@ function NavLink({ item, active }: { item: NavItem; active: boolean }) {
             {item.badge}
           </span>
         ) : null}
-      </Link>
+      </AppLink>
     </li>
   );
 }
