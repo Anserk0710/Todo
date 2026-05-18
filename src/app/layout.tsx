@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import { AppRouterProvider } from "@/lib/app-router";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const jetbrainsMono = JetBrains_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "GA Todo",
-  description: "Aplikasi manajemen tugas harian untuk tim GA.",
+  title: "GA Todo \u2014 Manajemen Pekerjaan Harian",
+  description:
+    "Aplikasi to-do list modern untuk tim GA: rencanakan pekerjaan, catat requirement, dan pantau progress harian.",
 };
 
 export default function RootLayout({
@@ -25,9 +28,22 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} dark h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full bg-background text-foreground flex flex-col">
+        <AppRouterProvider>{children}</AppRouterProvider>
+        <Toaster
+          position="top-right"
+          theme="dark"
+          toastOptions={{
+            classNames: {
+              toast:
+                "glass !bg-card/80 !text-foreground !border-border/60 !rounded-xl",
+            },
+          }}
+        />
+      </body>
     </html>
   );
 }
