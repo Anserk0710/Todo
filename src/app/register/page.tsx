@@ -1,26 +1,26 @@
 import Link from "next/link";
 
 import { AuthShell } from "@/components/auth/auth-shell";
-import { LoginForm } from "@/components/auth/login-form";
+import { RegisterForm } from "@/components/auth/register-form";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <AuthShell
-      heading="Selamat datang kembali"
-      subheading="Masuk untuk melanjutkan mengelola pekerjaan GA Anda hari ini."
+      heading="Buat akun baru"
+      subheading="Daftarkan akun tim GA untuk mulai mengatur pekerjaan harian dengan rapi."
       footer={
         <>
-          Belum punya akun?{" "}
+          Sudah punya akun?{" "}
           <Link
-            href="/register"
+            href="/"
             className="font-medium text-foreground hover:text-indigo-300 transition-colors"
           >
-            Daftar di sini
+            Masuk
           </Link>
         </>
       }
     >
-      <LoginForm />
+      <RegisterForm />
     </AuthShell>
   );
 }
