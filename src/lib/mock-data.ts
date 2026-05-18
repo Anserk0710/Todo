@@ -65,6 +65,163 @@ export const CATEGORIES = [
   "Administrasi",
 ];
 
+export type CategoryMeta = {
+  name: string;
+  description: string;
+  color: string;
+  accent: string;
+  taskCount: number;
+  doneCount: number;
+};
+
+export const CATEGORY_META: CategoryMeta[] = [
+  {
+    name: "Maintenance",
+    description: "Pekerjaan perbaikan & perawatan fasilitas kantor.",
+    color: "bg-indigo-500",
+    accent: "from-indigo-500/30 to-violet-500/10",
+    taskCount: 2,
+    doneCount: 1,
+  },
+  {
+    name: "Procurement",
+    description: "Pengadaan barang, ATK, dan kebutuhan operasional.",
+    color: "bg-amber-500",
+    accent: "from-amber-500/30 to-orange-500/10",
+    taskCount: 1,
+    doneCount: 0,
+  },
+  {
+    name: "Event",
+    description: "Persiapan town hall, gathering, dan acara internal.",
+    color: "bg-fuchsia-500",
+    accent: "from-fuchsia-500/30 to-pink-500/10",
+    taskCount: 1,
+    doneCount: 0,
+  },
+  {
+    name: "Inventaris",
+    description: "Audit, mutasi, dan stok opname aset perusahaan.",
+    color: "bg-emerald-500",
+    accent: "from-emerald-500/30 to-teal-500/10",
+    taskCount: 1,
+    doneCount: 0,
+  },
+  {
+    name: "Vendor",
+    description: "Kontrak, evaluasi, dan koordinasi vendor eksternal.",
+    color: "bg-rose-500",
+    accent: "from-rose-500/30 to-pink-500/10",
+    taskCount: 1,
+    doneCount: 0,
+  },
+  {
+    name: "Administrasi",
+    description: "Surat menyurat, rekap data, dan pelaporan rutin.",
+    color: "bg-sky-500",
+    accent: "from-sky-500/30 to-cyan-500/10",
+    taskCount: 2,
+    doneCount: 1,
+  },
+];
+
+export type TeamMember = {
+  id: string;
+  name: string;
+  initials: string;
+  role: string;
+  email: string;
+  status: "active" | "away" | "offline";
+  activeTasks: number;
+  completedThisWeek: number;
+  workload: number;
+};
+
+export const TEAM_MEMBERS: TeamMember[] = [
+  {
+    id: "tm-001",
+    name: "Andini Putri",
+    initials: "AP",
+    role: "GA Officer",
+    email: "andini.p@perusahaan.co.id",
+    status: "active",
+    activeTasks: 4,
+    completedThisWeek: 6,
+    workload: 78,
+  },
+  {
+    id: "tm-002",
+    name: "Budi Santoso",
+    initials: "BS",
+    role: "GA Staff — Maintenance",
+    email: "budi.s@perusahaan.co.id",
+    status: "active",
+    activeTasks: 3,
+    completedThisWeek: 4,
+    workload: 62,
+  },
+  {
+    id: "tm-003",
+    name: "Citra Larasati",
+    initials: "CL",
+    role: "GA Staff — Event",
+    email: "citra.l@perusahaan.co.id",
+    status: "away",
+    activeTasks: 5,
+    completedThisWeek: 3,
+    workload: 85,
+  },
+  {
+    id: "tm-004",
+    name: "Dimas Rahman",
+    initials: "DR",
+    role: "GA Staff — Inventaris",
+    email: "dimas.r@perusahaan.co.id",
+    status: "active",
+    activeTasks: 2,
+    completedThisWeek: 5,
+    workload: 48,
+  },
+  {
+    id: "tm-005",
+    name: "Eko Marwoto",
+    initials: "EM",
+    role: "GA Staff — Administrasi",
+    email: "eko.m@perusahaan.co.id",
+    status: "offline",
+    activeTasks: 1,
+    completedThisWeek: 7,
+    workload: 32,
+  },
+  {
+    id: "tm-006",
+    name: "Fitri Hapsari",
+    initials: "FH",
+    role: "GA Supervisor",
+    email: "fitri.h@perusahaan.co.id",
+    status: "active",
+    activeTasks: 3,
+    completedThisWeek: 9,
+    workload: 70,
+  },
+];
+
+export type WeeklyPoint = {
+  label: string;
+  completed: number;
+  created: number;
+};
+
+export const WEEKLY_TREND: WeeklyPoint[] = [
+  { label: "Sen", completed: 4, created: 5 },
+  { label: "Sel", completed: 6, created: 4 },
+  { label: "Rab", completed: 3, created: 7 },
+  { label: "Kam", completed: 7, created: 6 },
+  { label: "Jum", completed: 5, created: 3 },
+  { label: "Sab", completed: 2, created: 1 },
+  { label: "Min", completed: 1, created: 0 },
+];
+
 export const ASSIGNEES: { value: string; label: string }[] = [
   { value: "me", label: "Saya (Andini Putri)" },
   { value: "bs", label: "Budi S." },
